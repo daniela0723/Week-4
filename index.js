@@ -6,9 +6,9 @@ function writeFullName(firstName, lastName) {
 writeFullName("Daniela", "Carrillo");
 
 //2. Write the same function as above as an arrow function with a different name
-const writeFullNameArrow = (firstName, lastName) => `${firstName} ${lastName}`;
+const writeFullNameArrow = (firstName, lastName) => console.log(`${firstName} ${lastName}`);
 
-console.log(writeFullNameArrow("Daniela", "Carrillo"));
+writeFullNameArrow("Ziggy", "Stardust");
 
 //3.a Using setTimeout, write an inline, anonymous arrow function in the callback parameter position
 //1000 ms = 1 second;
@@ -33,25 +33,27 @@ d.  Outiside of your function, create an array of strings.  Call processSplicedV
 const months = ["January", "February", "March", "April", "May", "June"];
 
 function processSplicedValue(array, splicedElement, callBack) {
-  splicedValue = array.splice(`${splicedElement}`, 1);
+  const splicedValue = array.splice(splicedElement, 1);
   callBack(splicedValue);
 }
 
-processSplicedValue(months, 1, console.log); //
+processSplicedValue(months, 1, console.log); // First Call:['February']
 
 //e.
-processSplicedValue(months, 1, alert); // Second call.  Alerts March.
+processSplicedValue(months, 1, alert); // Second call: Alerts March.
 
 //f.	Call the processSplicedValue function again, but this time pass in an anonymous arrow function that alerts the spliced value.
 
-processSplicedValue(months, 1, (splicedValue) => alert(splicedValue)); // Third call alerts April.
+processSplicedValue(months, 1, (splicedValue) => alert(splicedValue)); // Third call: alerts April.
 
 //g.	Call the processSplicedValue function one more time, but this time, pass in a custom function of your choice that you should create and name.
-//console.log(typeof `${splicedValue}`); // string, so use string method to transform
 
-capitalizeSplicedValue = () => console.log(`${splicedValue}`.toUpperCase());
+//`${splicedValue}` turned splicedValue into a string, so use a string method to transform.
 
-processSplicedValue(months, 1, capitalizeSplicedValue);
-// Displays MAY on console.
+function transformToUpperCase(splicedValue) {
+  console.log(`${splicedValue}`.toUpperCase());
+};
 
+processSplicedValue(months, 1, transformToUpperCase);
+//Displays MAY on console.
 
